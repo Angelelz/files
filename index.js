@@ -19,6 +19,8 @@ app.get("/login", (_, response) => {
   return response.sendFile(path.join(__dirname, "/login.html"));
 });
 
+// console.log({ port, user, pass });
+
 app.post("/login", async (request, response) => {
   if (user === request.body.name && pass === request.body.password) {
     await setCookie(response);
@@ -31,7 +33,7 @@ app.post("/login", async (request, response) => {
 app.use((request, response) => {
   return handler(request, response, {
     public: process.env.PUBLIC_PATH,
-    rewrites: [{ source: "/login", destination: "/login.html" }],
+    // rewrites: [{ source: "/login", destination: "/login.html" }],
   });
 });
 
